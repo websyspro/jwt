@@ -22,10 +22,8 @@ $scriptBlock = {
   $output = & php index.php 2>&1
   $end = Get-Date
   $timer = $end - $start
-  $changedPath = $Event.SourceEventArgs.FullPath
 
   Show-Log "File changed. Running php index.php" "Cyan"
-  Show-Log "File changed: $changedPath" "Cyan"
   Show-Log "Execution completed on $($timer.TotalSeconds) seconds." "Green"
 
   $output | ForEach-Object { Write-Host $_ }
