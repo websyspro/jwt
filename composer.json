@@ -1,0 +1,18 @@
+{
+  "name": "websyspro/watch",
+  "description": "File watcher for PHP projects using PowerShell",
+  "license": "MIT",
+  "type": "library",
+  "autoload": {
+      "psr-4": {
+          "Websyspro\\Watch\\": "src/"
+      }
+  },
+  "authors": [
+      {
+          "name": "websyspro",
+          "email": "websyspro.services@gmail.com"
+      }
+  ],
+  "require": {}
+}
