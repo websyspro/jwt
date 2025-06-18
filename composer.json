@@ -1,13 +1,13 @@
 {
-  "name": "websyspro/watch",
-  "description": "File watcher for PHP projects using PowerShell",
+  "name": "websyspro/jwt",
+  "description": "JWT generator and validator for php",
   "minimum-stability": "dev",
   "prefer-stable": true,
   "license": "MIT",
   "type": "library",
   "autoload": {
     "psr-4": {
-      "Websyspro\\Watch\\": "src/"
+      "Websyspro\\Jwt\\": "src/"
     }
   },
   "authors": [
