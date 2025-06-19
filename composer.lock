@@ -4,12 +4,53 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d51678abca627766845fe6c7fc094456",
+    "content-hash": "a6c0c44dd9c21185721e3323b5ae0652",
     "packages": [],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "websyspro/common",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/websyspro/common.git",
+                "reference": "6252239a6f984d95e3c2285e9cf0146efc9e4048"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/websyspro/common/zipball/6252239a6f984d95e3c2285e9cf0146efc9e4048",
+                "reference": "6252239a6f984d95e3c2285e9cf0146efc9e4048",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Websyspro\\Commons\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "websyspro",
+                    "email": "websyspro.services@gmail.com"
+                }
+            ],
+            "description": "Set of PHP features for use in Libraries",
+            "support": {
+                "issues": "https://github.com/websyspro/common/issues",
+                "source": "https://github.com/websyspro/common/tree/main"
+            },
+            "time": "2025-06-17T13:03:58+00:00"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {},
+    "stability-flags": {
+        "websyspro/common": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {},
