@@ -15,6 +15,7 @@ Class Decode
     private string $key
   ){
     $this->Decoding();
+    $this->Clears();
   }
 
   private function UrlsafeB64Decode(
@@ -100,5 +101,11 @@ Class Decode
     if(isset($this->payload->exp) === true && $this->payload->exp <= $time){
       $this->verified = false;
     }
+  }
+
+  public function Clears(
+  ): void {
+    unset($this->jwt);
+    unset($this->key);
   }
 }
