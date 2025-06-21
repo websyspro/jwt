@@ -87,19 +87,21 @@ Class Decode
     );
 
     $time = time();
-    
+
     if(isset($this->payload->jti) === false){
       $this->verified = false;
     } else
-    if(isset($this->payload->nbf) === true && $this->payload->nbf < $time){
+    if(isset($this->payload->nbf) === true && $this->payload->nbf > $time){
       $this->verified = false;
     } else
-    if(isset($this->payload->iat) === true && $this->payload->iat < $time){
-      $this->verified = false;
-    }
-    else
-    if(isset($this->payload->exp) === true && $this->payload->exp <= $time){
-      $this->verified = false;
+    if(isset($this->payload->iat) === true && isset($this->payload->exp)){
+      if($this->payload->iat > $time){
+        $this->verified = false;
+      }
+
+      if($this->payload->exp <= $time){
+        $this->verified = false;
+      }
     }
   }
 
