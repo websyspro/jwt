@@ -18,15 +18,15 @@ Class Decode
     $this->Clears();
   }
 
-  private function UrlsafeB64Decode(
+  private function urlsafeB64Decode(
     string $input
   ): string {
     return base64_decode(
-      Decode::ConvertBase64UrlToBase64($input)
+      Decode::convertBase64UrlToBase64($input)
     );
   }
 
-  public function ConvertBase64UrlToBase64(
+  public function convertBase64UrlToBase64(
     string $input
   ): string {
     $remainder = strlen($input) % 4;
@@ -42,7 +42,7 @@ Class Decode
     );
   }
   
-  public function JSONDecode(
+  public function jsonDecode(
     string $input
   ): mixed {
     $obj = json_decode(
@@ -58,7 +58,7 @@ Class Decode
     return $obj;
   }
 
-  private function Verify(
+  private function verify(
     string $msg,
     string $cryptor,
     string $key
@@ -68,21 +68,21 @@ Class Decode
     ) === 1;
   }  
 
-  private function Decoding(
+  private function decoding(
   ): void {
     [$head, $body, $cryptor] = (
       explode(".", $this->jwt)
     );
 
     $this->payload = (object)(
-      $this->JsonDecode(
-        $this->UrlsafeB64Decode(
+      $this->jsonDecode(
+        $this->urlsafeB64Decode(
           $body
         )
       )
     );
 
-    $this->verified = $this->Verify(
+    $this->verified = $this->verify(
       "{$head}.{$body}", $cryptor, $this->key
     );
 
@@ -105,7 +105,7 @@ Class Decode
     }
   }
 
-  public function Clears(
+  public function clears(
   ): void {
     unset($this->jwt);
     unset($this->key);

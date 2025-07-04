@@ -6,7 +6,7 @@ use Exception;
 
 class Sign
 {
-  public static function Set(
+  public static function set(
     string $signingInput,
     string $key,
     string $algorithm,

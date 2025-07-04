@@ -15,7 +15,7 @@ class Encode
     $this->Generation();
   }
 
-  private function Header(
+  private function header(
   ): array {
     return [
       "typ" => "JWT",
@@ -23,7 +23,7 @@ class Encode
     ];
   }
 
-  private function UUID(
+  private function uuid(
   ): string {
     $data = random_bytes(16);
 
@@ -39,25 +39,25 @@ class Encode
     );
   }  
 
-  private function Payload(
+  private function payload(
   ): array {
     return $this->payload;
   }
 
-  private function DefaultPayload(
+  private function defaultPayload(
   ): array {
     $time = time();
 
     return [
-      "jti" => $this->UUID(),
+      "jti" => $this->uuid(),
       "nbf" => $time,
       "iat" => $time,
       "exp" => $time + 3600,
-      "data" => $this->Payload()
+      "data" => $this->payload()
     ];
   }
 
-  private function JSONEncode(
+  private function jsonEncode(
     array $input
   ): string {
     return (string)json_encode(
@@ -65,7 +65,7 @@ class Encode
     );
   }
 
-  private function UrlsafeB64Encode(
+  private function urlsafeB64Encode(
     string $input  
   ): string {
     return str_replace(
@@ -77,30 +77,30 @@ class Encode
     );
   }
 
-  private function Generation(
+  private function generation(
   ): void {
-    $this->jwt[] = $this->UrlsafeB64Encode(
-      $this->JSONEncode(
-        $this->Header()
+    $this->jwt[] = $this->urlsafeB64Encode(
+      $this->jsonEncode(
+        $this->header()
       )
     );
     
-    $this->jwt[] = $this->UrlsafeB64Encode(
-      $this->JSONEncode(
-        $this->DefaultPayload()
+    $this->jwt[] = $this->urlsafeB64Encode(
+      $this->jsonEncode(
+        $this->defaultPayload()
       )
     );
 
-    $this->jwt[] = $this->UrlsafeB64Encode(
-      Sign::Set(
-        Util::Join(
+    $this->jwt[] = $this->urlsafeB64Encode(
+      Sign::set(
+        Util::join(
           ".", $this->jwt
         ), $this->key, "SHA256"
       )
     );
   }
   
-  public function Get(
+  public function get(
   ): string {
     return Util::Join(
       ".", $this->jwt
